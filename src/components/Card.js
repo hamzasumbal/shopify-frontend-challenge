@@ -22,7 +22,8 @@ const HSCard = ({data})=>{
       <Card.Text>
         {data.explanation.substring(0,150)} ...
       </Card.Text>
-      <Button className = {classes.button}>Like</Button>
+      <span className={classes.heart}><i style ={{color : "white"}} class="fa fa-heart-o" aria-hidden="true" ></i> </span>
+      <span className={classes.seeMore}>Read more</span>
     </Card.Body>
   </Card>
 }
