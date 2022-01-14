@@ -9,7 +9,7 @@ const Cards = () => {
   const [loading, setLoading] = useState(true);
   const [loadMoreLoading, setLoadMoreLoading] = useState(false);
   const {
-    state: { spaceData },
+    state: { spaceData, error },
     getData,
     getMoreData,
   } = useContext(DataContext);
@@ -42,6 +42,7 @@ const Cards = () => {
         <Button
           className={classes.loadMore}
           onClick={onPressLoadMore}
+          disabled = {loadMoreLoading}
         >
           {loadMoreLoading ? (
             <Spinner animation="border" variant="light"/>

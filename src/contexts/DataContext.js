@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const DataContext = React.createContext();
 
+const API_URL = "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&count=8"
+
 export const Provider = ({ children }) => {
   //define States
   const [spaceData, setSpaceData] = useState([]);
@@ -9,10 +11,7 @@ export const Provider = ({ children }) => {
 
   const getData = async (callback) => {
     try {
-      const response = await fetch(
-        "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&count=8"
-        /* "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&date=2006-08-10" */
-      );
+      const response = await fetch(API_URL);
       const data = await response.json();
       const UpdatedData = addLikeToArray(data);
       setSpaceData(UpdatedData);
@@ -25,10 +24,7 @@ export const Provider = ({ children }) => {
 
   const getMoreData = async (callback) => {
     try {
-      const response = await fetch(
-        "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&count=8"
-        /* "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&date=2006-08-10" */
-      );
+      const response = await fetch(API_URL);
       const data = await response.json();
       const UpdatedData = addLikeToArray(data);
       setSpaceData(prev => [...prev,...UpdatedData])
