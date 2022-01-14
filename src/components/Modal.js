@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, {useContext } from "react";
 import Modal from "react-modal";
-import Button from "react-bootstrap/Button";
 import classes from "./Modal.module.css";
 import ModalContext from "../contexts/ModalContext";
 import DataContext from "../contexts/DataContext";
