@@ -11,6 +11,7 @@ Read more about challenge [here](https://docs.google.com/document/d/13zXpyrC2yGx
 - Display descriptive data for each image
 - Like an post
 - Unlike an post
+- Shareable Link
 - Responsive Design
 - Stores information about liked images in LocalStorage
 
