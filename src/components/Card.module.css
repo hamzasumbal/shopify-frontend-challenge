@@ -1,0 +1,65 @@
+.card{
+  margin: 25px;
+  width: 100px;
+  height: 450px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imageContainer{
+    overflow: hidden;
+}
+
+
+.image {
+     /* Animation */
+    margin: 0 auto;
+    height: 180px;
+    vertical-align: middle;
+    transition: transform 0.3s, height 0.3s;
+    background-color: black;
+  }
+  .seeMore{
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    opacity: 0;
+    transition: all 0.3s;
+    font-weight: bold;
+    color: rgb(73, 73, 73);
+  }
+  
+.card:hover .image{
+    transform: scale(1.05); 
+    height: 170px;
+  }
+
+.card:hover .seeMore{
+    opacity: 1;
+    bottom: 5px;
+  }  
+
+
+.heart{
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}  
+
+.heart i{
+  font-size: 1.5rem;
+  color : white;
+  
+}
+
+@media (max-width: 800px) {
+  .card:hover .seeMore{
+    opacity: 0;
+  }  
+  
+}
+
+
+
+
+

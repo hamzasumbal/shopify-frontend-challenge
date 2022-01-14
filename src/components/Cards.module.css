@@ -1,0 +1,32 @@
+
+.cardsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+
+.spinner{
+    height: 80vh;
+}
+
+
+.loadMore{
+    justify-self: center;
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+    border : 0px
+}
+
+.loadMore:hover{
+    background-color: rgb(48, 48, 48);
+    color: white;
+}
+
+.loadMore:focus{
+    background-color: rgb(48, 48, 48);
+    color: white;
+}
