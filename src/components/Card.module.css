@@ -26,7 +26,7 @@
     opacity: 0;
     transition: all 0.3s;
     font-weight: bold;
-    color: grey;
+    color: rgb(73, 73, 73);
   }
   
 .card:hover .image{
