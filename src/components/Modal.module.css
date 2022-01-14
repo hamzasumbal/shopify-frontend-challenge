@@ -32,8 +32,15 @@ p {
     align-items: flex-start;
 }
 
-.heart i{
+.iconContainer{
+    display: flex;
+   
+}
+
+.icon i{
     font-size: 2rem;  
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .spinner{

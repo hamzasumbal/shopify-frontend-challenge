@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-modal";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import classes from "./Modal.module.css";
 import { Spinner } from "react-bootstrap";
 import DataContext from "../contexts/DataContext";
@@ -24,15 +24,23 @@ const customStyles = {
 };
 
 const CustomModal = () => {
+  const currentURL = window.location.href;
+
   const { date } = useParams();
+  const navigate = useNavigate();
   const { getCustomData } = useContext(DataContext);
   const [openModal, setOpenModal] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [data, setData] = useState({});
 
   const getData = async () => {
-    console.log(await getCustomData(date));
-    setData(await getCustomData(date));
+    const data = await getCustomData(date);
+    if (data.code === 400) {
+      setError(true);
+      return;
+    }
+    setData(data);
     setLoading(false);
   };
 
@@ -41,6 +49,7 @@ const CustomModal = () => {
   }, [date]);
 
   const closeModal = () => {
+    navigate("/");
     setOpenModal(false);
   };
 
@@ -53,6 +62,10 @@ const CustomModal = () => {
     } else {
       localStorage.removeItem(object.title);
     }
+  };
+
+  const onPressShare = () => {
+    window.alert(`Shareable URL : ${currentURL}`);
   };
 
   return (
@@ -71,22 +84,29 @@ const CustomModal = () => {
             <div className={classes.explanation}>
               <p>{data.explanation}</p>
             </div>
-            <span className={classes.heart}>
-              <i
-                style={{ color: data.like ? "red" : "black" }}
-                className={data.like ? "fa fa-heart" : "fa fa-heart-o"}
-                aria-hidden="true"
-                onClick={(e) => {
-                  onPressLike(data);
-                }}
-              ></i>{" "}
-            </span>
+            <div className={classes.buttonContainer}>
+              <span className={classes.icon}>
+                <i
+                  style={{ color: data.like ? "red" : "black" }}
+                  className={data.like ? "fa fa-heart" : "fa fa-heart-o"}
+                  aria-hidden="true"
+                  onClick={(e) => {
+                    onPressLike(data);
+                  }}
+                ></i>{" "}
+              </span>
+              <span className={classes.icon} onClick={onPressShare}>
+                <i className="fa fa-share-square"></i>
+              </span>
+            </div>
           </div>
         </div>
       ) : (
-        <div className={classes.spinner}>
-          <Spinner animation="border" />
-        </div>
+        <>
+          <div className={classes.spinner}>
+            {error? <h1>No Data Found</h1> : <Spinner animation="border" />}
+          </div>
+        </>
       )}
     </Modal>
   );
