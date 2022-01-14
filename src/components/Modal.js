@@ -1,9 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Modal from "react-modal";
-import Button from "react-bootstrap/Button";
 import classes from "./Modal.module.css";
 import ModalContext from "../contexts/ModalContext";
 import DataContext from "../contexts/DataContext";
+import { Alert } from "bootstrap";
+
 
 const customStyles = {
   content: {
@@ -15,7 +16,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     width: "90%",
     padding: "20px",
-    maxHeight: "80%"
+    maxHeight: "80%",
   },
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.65)",
@@ -24,10 +25,21 @@ const customStyles = {
 
 const DetailsModal = () => {
 
-  const {state : {openModal}, closeModal} = useContext(ModalContext);
-  const {state : {spaceData}, onPressLike} = useContext(DataContext)
+  const currentURL = window.location.href
+  const {
+    state: { openModal },
+    closeModal,
+  } = useContext(ModalContext);
+  const {
+    state: { spaceData },
+    onPressLike,
+  } = useContext(DataContext);
 
   const data = openModal.index > -1 ? spaceData[openModal.index] : {};
+
+  const onPressShare = ()=>{
+    window.alert(`Shareable URL : ${currentURL}${data.date}`)
+  }
 
   return (
     <Modal
@@ -37,23 +49,29 @@ const DetailsModal = () => {
       ariaHideApp={false}
     >
       <div className={classes.modalContainer}>
-     <img className={classes.image} src = {data.hdurl}/>
-     <div className={classes.textContainer}>
-     <h1>{data.title}</h1>
-     <h5>{data.date}</h5>
-     <div className={classes.explanation}>
-     <p>{data.explanation}</p>
-     </div>
-     <span className={classes.heart}>
-          <i
-            style={{ color: data.like? "red" : "black" }}
-            className={data.like? "fa fa-heart" : "fa fa-heart-o"}
-            aria-hidden="true"
-            onClick={(e)=>{
-              onPressLike(data)}}
-          ></i>{" "}
-        </span>
-      </div>
+        <img className={classes.image} src={data.hdurl} />
+        <div className={classes.textContainer}>
+          <h1>{data.title}</h1>
+          <h5>{data.date}</h5>
+          <div className={classes.explanation}>
+            <p>{data.explanation}</p>
+          </div>
+          <div className={classes.buttonContainer}>
+          <span className={classes.icon}>
+            <i
+              style={{ color: data.like ? "red" : "black" }}
+              className={data.like ? "fa fa-heart" : "fa fa-heart-o"}
+              aria-hidden="true"
+              onClick={(e) => {
+                onPressLike(data);
+              }}
+            ></i>{" "}
+          </span >
+          <span className={classes.icon} onClick={onPressShare}>
+          <i className="fa fa-share-square"></i>
+          </span>
+          </div>
+        </div>
       </div>
     </Modal>
   );

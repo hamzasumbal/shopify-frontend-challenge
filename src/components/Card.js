@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import classes from "./Card.module.css";
 import ModalContext from "../contexts/ModalContext";
 import DataContext from "../contexts/DataContext";

@@ -34,6 +34,18 @@ export const Provider = ({ children }) => {
     }
   };
 
+  const getCustomData = async(date)=>{
+
+    try {
+      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&date=${date}`);
+      const data = await response.json();
+      const UpdatedData = addLikeToArray([data]);
+      return UpdatedData[0]
+    } catch {
+      setError("Request Failed, Please try again");
+    }
+  }
+
   const addLikeToArray = (data) => {
 
     for (let i = 0; i < data.length; i++) {
@@ -73,7 +85,8 @@ export const Provider = ({ children }) => {
         state: {spaceData,error},
         getData,
         onPressLike,
-        getMoreData
+        getMoreData,
+        getCustomData
       }}
     >
       {children}
