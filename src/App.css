@@ -1,7 +1,7 @@
 .App{
   padding: 0% 5%;
   padding-bottom: 15%;
-  height: 100vh;
+/*   height: 100vh; */
   display: grid;
   background: url('./assets/background.png') no-repeat center bottom fixed;
   -webkit-background-size: cover;
