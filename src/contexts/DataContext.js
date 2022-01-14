@@ -14,13 +14,31 @@ export const Provider = ({ children }) => {
         /* "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&date=2006-08-10" */
       );
       const data = await response.json();
-      addLikeToArray(data, callback);
+      const UpdatedData = addLikeToArray(data);
+      setSpaceData(UpdatedData);
+      callback();
+
     } catch {
       setError("Request Failed, Please try again");
     }
   };
 
-  const addLikeToArray = (data, callback) => {
+  const getMoreData = async (callback) => {
+    try {
+      const response = await fetch(
+        "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&count=8"
+        /* "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&date=2006-08-10" */
+      );
+      const data = await response.json();
+      const UpdatedData = addLikeToArray(data);
+      setSpaceData(prev => [...prev,...UpdatedData])
+      callback()
+    } catch {
+      setError("Request Failed, Please try again");
+    }
+  };
+
+  const addLikeToArray = (data) => {
 
     for (let i = 0; i < data.length; i++) {
       if (localStorage.getItem(data[i].title) === "liked") {
@@ -29,8 +47,7 @@ export const Provider = ({ children }) => {
         data[i] = { ...data[i], like: false };
       }
     }
-    setSpaceData(data);
-    callback();
+    return data;
   };
 
   const onPressLike = (object) => {
@@ -51,13 +68,16 @@ export const Provider = ({ children }) => {
     });
   };
 
+
+ 
+
   return (
     <DataContext.Provider
       value={{
-        state: spaceData,
-        error,
+        state: {spaceData,error},
         getData,
         onPressLike,
+        getMoreData
       }}
     >
       {children}

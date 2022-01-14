@@ -7,7 +7,7 @@ import DataContext from "../contexts/DataContext";
 
 const HSCard = ({ data }) => {
   const { onPressCard } = useContext(ModalContext);
-  const {state : spaceData,  onPressLike } = useContext(DataContext);
+  const {state : {spaceData},  onPressLike } = useContext(DataContext);
 
   return (
     <Card

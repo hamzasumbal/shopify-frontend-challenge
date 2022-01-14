@@ -7,7 +7,7 @@ import DataContext from "../contexts/DataContext";
 const Cards = () => {
 
   const [loading, setLoading] = useState(true);
-  const {state : spaceData , getData} = useContext(DataContext)
+  const {state : {spaceData} , getData,} = useContext(DataContext)
 
   useEffect(() => {
     getData(()=>setLoading(false));
