@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "react-modal";
 import Button from "react-bootstrap/Button";
 import classes from "./Modal.module.css";
 import ModalContext from "../contexts/ModalContext";
-
+import DataContext from "../contexts/DataContext";
 
 const customStyles = {
   content: {
@@ -24,10 +24,14 @@ const customStyles = {
 
 const DetailsModal = () => {
 
+  const {state : {openModal}, closeModal} = useContext(ModalContext);
+  const {state : spaceData, onPressLike} = useContext(DataContext)
 
-  const {state : {openModal}, closeModal} = useContext(ModalContext)
+  const index = spaceData.indexOf(openModal.data)
+  const data = index > -1 ? spaceData[index] : {};
 
-  const data = openModal.data;
+
+ /*  const data = spaceData[dataIndex]; */
 
   return (
     <Modal
@@ -44,7 +48,16 @@ const DetailsModal = () => {
      <div className={classes.explanation}>
      <p>{data.explanation}</p>
      </div>
-      <Button className = {classes.button}>Like</Button>
+     <span className={classes.heart}>
+          <i
+            style={{ color: data.like? "red" : "black" }}
+            className={data.like? "fa fa-heart" : "fa fa-heart-o"}
+            aria-hidden="true"
+            onClick={(e)=>{
+              e.stopPropagation();
+              onPressLike(data)}}
+          ></i>{" "}
+        </span>
       </div>
       </div>
     </Modal>

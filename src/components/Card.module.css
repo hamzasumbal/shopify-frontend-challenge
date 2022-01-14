@@ -17,10 +17,12 @@
     height: 180px;
     vertical-align: middle;
     transition: transform 0.3s, height 0.3s;
+    background-color: black;
   }
   .seeMore{
     position: absolute;
     bottom: -10px;
+    left: 10px;
     opacity: 0;
     transition: all 0.3s;
     font-weight: bold;
@@ -47,6 +49,13 @@
 .heart i{
   font-size: 1.5rem;
   color : white;
+  
+}
+
+@media (max-width: 800px) {
+  .card:hover .seeMore{
+    opacity: 0;
+  }  
   
 }
 

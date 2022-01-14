@@ -1,28 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Card from "./Card";
 import classes from "./Cards.module.css";
 import { Spinner } from "react-bootstrap";
+import DataContext from "../contexts/DataContext";
 
 const Cards = () => {
-  const [spaceData, setSpaceData] = useState([]);
+
   const [loading, setLoading] = useState(true);
+  const {state : spaceData , getData} = useContext(DataContext)
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await fetch(
-          "https://api.nasa.gov/planetary/apod?api_key=9wChezTPPYejHAnvpDCq6h3vbxSE58vagZEJVDLW&count=8"
-        );
-        const data = await response.json();
-        console.log(data);
-        setSpaceData(data);
-        setLoading(false);
-      } catch {
-        console.log("Error");
-      }
-    };
-
-    getData();
+    getData(()=>setLoading(false));
   }, []);
 
   return (

@@ -7,7 +7,7 @@ export const Provider = ({ children }) => {
   const [openModal, setOpenModal] = useState({ state: false, data: {} });
 
   const onPressCard = (data) => {
-    setOpenModal({state : true, data: data});
+    setOpenModal({state: true, data: data});
   };
 
   const closeModal = () => {

@@ -32,6 +32,10 @@ p {
     align-items: flex-start;
 }
 
+.heart i{
+    font-size: 2rem;  
+}
+
 @media (max-width: 800px) {
     .modalContainer{
         display: flex;
