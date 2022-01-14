@@ -4,14 +4,14 @@ const ModalContext = React.createContext();
 
 export const Provider = ({ children }) => {
   //define States
-  const [openModal, setOpenModal] = useState({ state: false, data: {} });
+  const [openModal, setOpenModal] = useState({ state: false, index: -1 });
 
-  const onPressCard = (data) => {
-    setOpenModal({state: true, data: data});
+  const onPressCard = (index) => {
+    setOpenModal({state: true, index : index});
   };
 
   const closeModal = () => {
-    setOpenModal({state: false, data: {} });
+    setOpenModal({state: false, index : -1 });
   };
 
 

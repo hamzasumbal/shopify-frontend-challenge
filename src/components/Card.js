@@ -13,7 +13,7 @@ const HSCard = ({ data }) => {
     <Card
       style={{ width: "18rem" }}
       className={classes.card}
-      onClick={(e) => onPressCard(data)}
+      onClick={(e) => onPressCard(spaceData.indexOf(data))}
     >
       <div className={classes.imageContainer}>
         <Card.Img className={classes.image} variant="top" src={data.url} />

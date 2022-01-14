@@ -27,11 +27,7 @@ const DetailsModal = () => {
   const {state : {openModal}, closeModal} = useContext(ModalContext);
   const {state : spaceData, onPressLike} = useContext(DataContext)
 
-  const index = spaceData.indexOf(openModal.data)
-  const data = index > -1 ? spaceData[index] : {};
-
-
- /*  const data = spaceData[dataIndex]; */
+  const data = openModal.index > -1 ? spaceData[openModal.index] : {};
 
   return (
     <Modal
