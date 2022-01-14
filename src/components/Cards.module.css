@@ -5,3 +5,8 @@
     flex-direction: row;
     justify-content: center;
 }
+
+
+.spinner{
+    height: 80vh;
+}
