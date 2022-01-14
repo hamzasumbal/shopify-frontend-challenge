@@ -1,0 +1,50 @@
+.image{
+    width: 45%;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+h5{
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+
+p {
+    font-size: 1rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  
+}
+
+.modalContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.textContainer{
+    width: 52%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (max-width: 800px) {
+    .modalContainer{
+        display: flex;
+        flex-direction: column;
+    } 
+     .image {
+        width: 100%;
+    }
+    .textContainer{
+        width: 100%;
+    }
+    p {
+        font-size: 0.8rem;
+    }
+    
+  }

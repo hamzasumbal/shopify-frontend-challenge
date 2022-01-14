@@ -17,23 +17,6 @@
     transition: transform 0.3s, height 0.3s;
   }
 
-  .button{
-      border : 0px;
-      font-weight: 600;
-  }
-
-  .button:hover{
-      font-weight: 600;
-  }
-  .button:focus{
-      font-weight: 600;
-      border: 0px
-}
-
-.button:disabled{
-    border : 0px;
-    font-weight: 600;
-}
   
 .card:hover .image{
     transform: scale(1.05); 

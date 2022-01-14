@@ -2,11 +2,15 @@ import React,{useContext, useState, useEffect} from 'react';
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import classes from './Card.module.css'
+import ModalContext from '../contexts/ModalContext';
 
 const HSCard = ({data})=>{
 
 
-    return<Card style={{ width: '18rem' }} className={classes.card}>
+    const {onPressCard} = useContext(ModalContext);
+
+
+    return<Card style={{ width: '18rem' }} className={classes.card} onClick = {()=>onPressCard(data)} >
       <div className = {classes.imageContainer}>
     <Card.Img className={classes.image} variant="top" src={data.url} />
     </div>
