@@ -50,7 +50,6 @@ const DetailsModal = () => {
             className={data.like? "fa fa-heart" : "fa fa-heart-o"}
             aria-hidden="true"
             onClick={(e)=>{
-              e.stopPropagation();
               onPressLike(data)}}
           ></i>{" "}
         </span>
