@@ -11,8 +11,7 @@ Read more about challenge [here](https://docs.google.com/document/d/13zXpyrC2yGx
 
 - Fetch data from one of NASA’s APIs and display the resulting images 
 - Display descriptive data for each image
-- Like an post
-- Unlike an post
+- Like a post
 - Shareable Link
 - Responsive Design
 - Stores information about liked images in LocalStorage
