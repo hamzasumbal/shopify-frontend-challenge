@@ -4,15 +4,16 @@ Shopify Frontend Developer Intern Challenge.
 
 [challenge.hamzasumbal.com](https://challenge.hamzasumbal.com/)
 
-Read more about challenge [here](https://docs.google.com/document/d/13zXpyrC2yGxoLXKktxw2VJG2Jw8SdUfliLM-bYQLjqE/edit#heading=h.v5qbt6acwgbo).
+Read more about the challenge [here](https://docs.google.com/document/d/13zXpyrC2yGxoLXKktxw2VJG2Jw8SdUfliLM-bYQLjqE/edit#heading=h.v5qbt6acwgbo).
 
 
 ## Features
 
 - Fetch data from one of NASA’s APIs and display the resulting images 
 - Display descriptive data for each image
-- Like a post
+- Like an image
 - Shareable Link
+- loading state while we wait for NASA’s API to return data
 - Responsive Design
 - Stores information about liked images in LocalStorage
 
