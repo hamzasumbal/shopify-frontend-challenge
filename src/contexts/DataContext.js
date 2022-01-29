@@ -13,11 +13,17 @@ export const Provider = ({ children }) => {
     try {
       const response = await fetch(`${API_URL}&count=8`);
       const data = await response.json();
+      if(data.code === 500)
+      {
+        throw "Server Error"
+      }
       const UpdatedData = addLikeToArray(data);
+      
+    
       setSpaceData(UpdatedData);
       callback();
 
-    } catch {
+    } catch(e) {
       setError("Request Failed, Please try again");
     }
   };
